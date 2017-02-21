@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Email Validations</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'main_app/style/index.css' %}" media="screen" title="no title">
+  </head>
+  <body>
+    <div class="container">
+      <h2>Add an Email address</h2>
+        {{ last_email.email }}
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+      <form class="" action="{% url 'create_email' %}" method="post">
+        {% csrf_token %}
+        <p>
+          Email Address: <input type="text" name="email" value="">
+        </p>
+        <p>
+          <input type="submit" name="submit" value="Submit">
+        </p>
+      </form>
+      <h2>Emails:</h2>
+      {% for email in emails %}
+        <p>{{ email.email }}</p>
+      {% endfor %}
+    </div><!-- end_of_container-->
+  </body>
+</html>
